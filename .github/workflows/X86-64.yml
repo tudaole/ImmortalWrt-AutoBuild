@@ -160,13 +160,15 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        #name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        name: X86-64
         allowUpdates: true
-        tag: ${{ env.FIRMWARE_TAG }}
+        #tag: ${{ env.FIRMWARE_TAG }}
+        tag: X86-64
         token: ${{ secrets.GH_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
-          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
+          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }} by ${{ env.DATE }}**
           ### 📒 固件信息(X86-64)
           - 这是x86-64-6.8kernel
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
